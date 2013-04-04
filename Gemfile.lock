@@ -1,0 +1,44 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ansi (1.4.3)
+    builder (3.2.0)
+    diff-lcs (1.2.2)
+    fuubar (1.1.0)
+      rspec (~> 2.0)
+      rspec-instafail (~> 0.2.0)
+      ruby-progressbar (~> 1.0.0)
+    hashie (2.0.3)
+    minitest (4.7.0)
+    minitest-emoji (1.0.0)
+    minitest-reporters (0.14.12)
+      ansi
+      builder
+      minitest (>= 2.12, < 5.0)
+      powerbar
+    nyan-cat-formatter (0.5.0)
+      rspec (>= 2.13)
+    powerbar (1.0.11)
+      ansi (~> 1.4.0)
+      hashie (>= 1.1.0)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-instafail (0.2.4)
+    rspec-mocks (2.13.0)
+    ruby-progressbar (1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fuubar
+  minitest
+  minitest-emoji
+  minitest-reporters
+  nyan-cat-formatter (= 0.5.0)
+  rspec

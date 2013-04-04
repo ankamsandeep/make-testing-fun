@@ -1,0 +1,152 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+
+#frame {
+  float: left;
+}
+
+#inner-frame {
+  font-family: monospace;
+  padding: 10px;
+  font-size: 100%;
+}
+
+.deck-container h1 {
+  font-weight: 300;
+}
+
+.deck-container .theme h1 {
+  background: #c00;
+  color: white;
+  padding: 40px;
+  margin: 0 80px;
+  font-weight: 300;
+}
+
+.deck-container .tip h1 {
+  font-size: 3.5em;
+  background: black;
+  color: white;
+  padding: 40px;
+  margin: 0 80px;
+}
+
+.red {
+ color: #933;
+}
+
+img.screenshot {
+  margin-top: 100px !important
+}
+
+.deck-container div.CodeMirror {
+  font-size: 120%;
+}
+
+.deck-container h1 {
+  font-weight: 300;
+}
+
+a, a:active, a:visited, a:hover {
+  color: #444 !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cfcfcf !important;
+  text-decoration: none;
+}
+
+.deck-container {
+  /* font-family: "Open Sans", sans-serif !important; */
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.25em;
+}
+
+.deck-container h1 {
+  font-size: 3.2em;
+}
+
+.deck-container h1 .subtitle{
+  font-size: .4em;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.deck-container .slide h2 {
+  font-size: 1.8em;
+  text-align: left;
+  color: #933;
+}
+
+.deck-container .slide h3 {
+  padding-top: 0.5em;
+  font-size: 1.8em;
+  color: #933;
+}
+
+.deck-container section {
+  font-size: 1.2em;
+}
+
+.deck-container ul,
+.deck-container ol {
+  font-size: 1.1em;
+}
+
+.deck-container .slide p {
+  margin-bottom: 0.5em;
+}
+
+.deck-container span {
+  font-size: 1.0em;
+}
+
+div.CodeMirror,
+.deck-container pre {
+  font-size: 0.9em;
+}
+
+.slide img.bordered {
+  border: 1px solid #ccc;
+}
+
+.slide .link {
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+}
+
+#conclusion div {
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+div a,
+.subtitle {
+  color: inherit;
+  text-decoration: none;
+  padding: 0 0.1em;
+  background: rgba(200,200,200,0.5);
+  text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
+  border-radius: 0.2em;
+
+  -webkit-transition: 0.5s;
+  -moz-transition:    0.5s;
+  -ms-transition:     0.5s;
+  -o-transition:      0.5s;
+  transition:         0.5s;
+}
+
+div a:hover {
+    background: rgba(50,50,50,1);
+    color: #cfcfcf;
+    text-shadow: -1px -1px 2px rgba(25,25,25,0.5);
+}
+
+.deck-container:hover .deck-next-link,
+.deck-container:hover .deck-prev-link {
+    display: none !important;
+}

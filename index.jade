@@ -1,0 +1,280 @@
+extends layout
+
+block slides
+
+  section.slide#title
+    h2 Ruby Midwest 2013
+    h1
+      Make Testing Fun With Test Reporters
+
+  section.slide
+    h1.red @mattsears
+
+  section.slide
+    img(class='screenshot', src='images/littlelines-logo.png')
+
+  section.slide
+    h1 Not a Serious Talk
+
+  section.slide
+    h1 Just Something Fun
+
+  section.slide
+    h1 Test?
+
+  section.slide
+    h1 What is a Test Reporter?
+
+  section.slide
+    h1 Why should we do this?
+
+  section.slide
+    h2 Sometimes this happens
+    img(class='screenshot', src='images/omg.png')
+
+  section.slide
+    h1 Frustration Driven Development
+
+  section.slide
+    h1 Testing.should be_fun
+
+  section.slide
+    h2 Like this
+    img(class='screenshot', src='images/oooh.png')
+
+  section.slide
+    h1 The Most Important Optimization: Happiness
+
+  section.slide
+    h1 Story Time
+
+  section.slide
+    img(class='screenshot', src='images/codebrawl.png')
+
+  section.slide
+    img(class='screenshot', src='images/codebrawl-rspec.png')
+
+  section.slide
+    img(class='screenshot', src='images/nyancat-formatter.png')
+
+  section.slide
+    h1 On to the code!
+
+  section.slide
+    h1 Build Our Own Reporter
+
+  section.slide.deck-next
+    h1 Three Simple Steps
+
+  section.slide.deck-next
+    h2 Step 1
+    h1 Pass, Fail, Pending or Skip?
+
+  section.slide.deck-next
+    h2 Step 2
+    h1 Print Test Result
+
+  section.slide.deck-next
+    h2 Step 3
+    h1 Print Test Summary
+
+  section.slide
+    h2 Requirements
+    h1 Simple & Fun
+
+  section.slide
+    h1 Emoji!
+
+  section.slide
+    .theme
+      h1 Minitest
+
+  section.slide
+    h2 Stream to use for output
+    h1 MiniTest::Unit.output
+
+  section.slide
+    h2 Minitest: Start with initializing a new class
+
+    textarea.code#code(name="code", mode="ruby", runnable=false).
+      require "minitest/unit"
+
+      module MiniTest
+        class Emoji
+
+          def initialize(io)
+            @io = io
+          end
+
+        end
+      end
+
+  section.slide.deck-next
+    h2 Minitest: Emoji Map
+
+    textarea.code#code(name="code", mode="ruby", runnable=false).
+      module MiniTest
+        class Emoji
+
+          EMOJIS = {
+            '.' => "\u{1F49A} ",
+            'E' => "\u{1f525} ",
+            'F' => "\u{1f4a9} ",
+            'S' => "\u{1f633} ",
+          }
+
+          ...
+        end
+      end
+
+  section.slide
+    h2 Minitest: Print
+
+    textarea.code#code(name="code", mode="ruby", runnable=false).
+      require "minitest/unit"
+
+      module MiniTest
+        class Emoji
+
+          # Prints Pass, Fail, Skip or Pending to the stream
+          def print(result)
+            io.print(EMOJIS[result] || result)
+          end
+        end
+      end
+
+  section.slide
+    h2 Minitest: Puts
+
+    textarea.code#code(name="code", mode="ruby", runnable=false).
+      require "minitest/unit"
+
+      module MiniTest
+        class Emoji
+
+          def puts(*o)
+            o.map! do |s|
+              s.to_s.sub!(/failures/, EMOJIS['F'] )
+              s.to_s.sub!(/errors/, EMOJIS['E'] )
+              s.to_s.sub!(/skips/, EMOJIS['S'] )
+            end
+
+            super
+          end
+        end
+      end
+
+  section.slide
+    h2 Minitest: Finally
+
+    textarea.code#code(name="code", mode="ruby", runnable=false).
+
+      MiniTest::Unit.output =
+        Emoji.new(MiniTest::Unit.output)
+
+      # Thats It!
+
+
+  section.slide
+    h1 [See Code]
+
+  section.slide
+    h1 Some other Minittest test reporters
+
+  section.slide
+    h2 Minitest: Pride
+    img(class='screenshot', src='images/minitest-pride.png')
+
+  section.slide
+    h2 Minitest: Emoji
+    img(class='screenshot', src='images/minitest-emoji.png')
+
+  section.slide
+    h2 Minitest: Reporters
+    img(class='screenshot', src='images/minitest-reporters.png')
+
+  section.slide
+    .theme
+      h1 Rspec
+
+  section.slide
+    :markdown
+      ## Rspec: BaseTextFormatter
+
+    textarea.code#code(name="code", mode="ruby", runnable=false).
+
+      class Emoji < RSpec::Core::Formatters::BaseTextFormatter
+
+        EMOJIS = {
+          '.' => "\u{1F49A} ",
+          'E' => "\u{1f525} ",
+          'F' => "\u{1f4a9} ",
+          'S' => "\u{1f633} ",
+        }
+
+        ...
+      end
+
+
+  section.slide
+    h2 Rspec
+
+    textarea.code#code(name="code", mode="ruby", runnable=false).
+
+      class Emoji < RSpec::Core::Formatters::BaseTextFormatter
+        ...
+
+        def example_passed(example)
+          output.print EMOJIS['.']
+        end
+
+        def example_pending(example)
+          output.print EMOJIS['S']
+        end
+
+        def example_failed(example)
+          output.print EMOJIS['F']
+        end
+
+      end
+
+   section.slide
+     :markdown
+       ## Rspec
+
+     textarea.code#code(name="code", mode="ruby", runnable="false").
+
+       class Emoji < RSpec::Core::Formatters::BaseTextFormatter
+         ...
+
+         def dump_summary(duration, examples, failures, pendings)
+           summary = "\nFinished in \#{duration} seconds"
+           summary << "\#{examples} examples, "
+           summary << "\#{failures} \#{EMOJIS['F']}, "
+           summary << "\#{pendings} \#{EMOJIS['S']}"
+           output.puts summary
+         end
+
+       end
+
+  section.slide.deck-next
+    h1 [See Example Code]
+
+  section.slide.deck-next
+    h1 Some other Rspec test reporters
+
+  section.slide.deck-next
+    h2 Fuubar
+    img(class='screenshot', src='images/minitest-reporters.png')
+
+  section.slide.deck-next
+    h1 NyanCatFormatter
+
+  section.slide#thanks
+    h1 Thanks!
+
+  section.slide#thanks
+    h1 Questions?
+
+  section.slide#thanks
+    h1 @mattsears
