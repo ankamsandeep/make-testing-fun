@@ -1,5 +1,5 @@
 require 'rspec/autorun'
-require_relative 'emoji'
+require 'emoji'
 
 describe "Emoji Rspec" do
 
